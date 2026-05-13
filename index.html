@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨境电商视觉设计师 | 个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A192F; 
+            --card-bg: #112240; 
+            --accent: #F97316; 
+            --text-main: #E2E8F0;
+            --text-dim: #94A3B8;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .glass-effect {
+            background: rgba(17, 34, 64, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .orange-gradient {
+            background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+        
+        .hero-glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, rgba(10, 25, 47, 0) 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* 作品集滑动 */
+        .project-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+        }
+        .project-card-mini {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .project-card-mini { flex: 0 0 calc(33.33% - 1rem); }
+        }
+
+        /* 灯箱动画 */
+        #lightbox {
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-img-container img {
+            max-height: 80vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="selection:bg-orange-500/30 overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-white/5 px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-tighter">DESIGNER<span class="text-orange-500">.VISUAL</span></div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+            <a href="#about" class="hover:text-white transition">关于</a>
+            <a href="#experience" class="hover:text-white transition">履历</a>
+            <a href="#portfolio" class="hover:text-white transition">项目合集</a>
+            <a href="#contact" class="hover:text-white transition">联系</a>
+        </div>
+        <a href="#contact" class="orange-gradient text-white px-5 py-2 rounded-full text-xs font-bold tracking-wider">意向面谈</a>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center pt-20 px-6 max-w-7xl mx-auto overflow-visible">
+        <!-- 背景装饰元素 -->
+        <div class="hero-glow top-1/4 -right-20"></div>
+        <div class="hero-glow bottom-0 -left-20" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(10, 25, 47, 0) 70%);"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+            <!-- 左侧内容区 -->
+            <div class="z-10 order-2 lg:order-1">
+                <div class="flex items-center space-x-3 mb-8">
+                    <span class="w-8 h-[2px] bg-orange-500"></span>
+                    <span class="text-orange-500 font-mono text-sm tracking-[0.3em] uppercase font-semibold">Cross-border Visual Expert</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.05] tracking-tighter">
+                    Discover, <span class="text-slate-400">Find</span>,<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-pink-500">Visual Drive</span><br>
+                    Growth.
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-400 max-w-lg mb-10 font-light leading-relaxed">
+                    跨境电商视觉设计。熟悉亚马逊/TikTok美学逻辑，利用 <span class="text-white font-medium">C4D建模</span> 与 <span class="text-white font-medium">AI技术</span>，为出海品牌构建极具转化力的视觉体系。
+                </p>
+
+                <div class="flex flex-wrap gap-5">
+                    <button class="bg-white text-black px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center shadow-xl shadow-white/10 group">
+                        <svg class="w-5 h-5 mr-2 group-hover:rotate-12 transition" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+                        下载简历 (PDF)
+                    </button>
+                    <a href="#portfolio" class="px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/5 hover:border-white/40 transition flex items-center group">
+                        <span class="mr-2">作品合集</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="mt-12 flex items-center space-x-8 opacity-50">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-white">5+</span>
+                        <span class="text-[10px] uppercase tracking-widest">Years Experience</span>
+                    </div>
+                    <div class="w-[1px] h-8 bg-white/20"></div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-white">200+</span>
+                        <span class="text-[10px] uppercase tracking-widest">Projects Done</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧视觉区 (参考 image_3b32f5.png) -->
+            <div class="relative order-1 lg:order-2 flex justify-center items-center">
+                <!-- 装饰性圆圈和线条 -->
+                <div class="absolute w-[120%] h-[120%] border border-white/5 rounded-full animate-rotate-slow"></div>
+                <div class="absolute w-[90%] h-[90%] border border-orange-500/10 rounded-full animate-rotate-slow" style="animation-direction: reverse;"></div>
+                
+                <!-- 类似图1的紫色曲线背景 (SVG) -->
+                <svg class="absolute w-full h-full text-indigo-500/20" viewBox="0 0 500 500" fill="none">
+                    <path d="M50 250C50 150 150 50 250 50S450 150 450 250 350 450 250 450 50 350 50 250" stroke="currentColor" stroke-width="1" stroke-dasharray="10 10" />
+                    <path d="M100 250C100 180 180 100 250 100S400 180 400 250" stroke="currentColor" stroke-width="2" class="opacity-30" />
+                </svg>
+
+                <!-- 核心 IP 形象展示 -->
+                <div class="relative z-10 animate-float">
+                    <div class="relative">
+                        <!-- 发光底座效果 -->
+                        <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-32 h-8 bg-orange-500/20 blur-2xl rounded-full"></div>
+                        <!-- 这里放置主视觉图，参考 image_3b32f5.png 的 IP 形象 -->
+                        <img src="https://placehold.co/600x800/0A192F/white?text=3D+IP+CHARACTER+PREVIEW" 
+                             class="w-full max-w-[450px] drop-shadow-[0_35px_35px_rgba(249,115,22,0.3)]" 
+                             alt="Core Visual"
+                             onerror="this.src='https://placehold.co/500x600/112240/f97316?text=3D+Visual+Expert'">
+                    </div>
+
+                    <!-- 浮动小装饰 -->
+                    <div class="absolute -top-10 -right-10 w-16 h-16 bg-gradient-to-tr from-orange-500 to-pink-500 rounded-full blur-xl opacity-50"></div>
+                    <div class="absolute bottom-20 -left-10 w-8 h-8 bg-indigo-500 rounded-full blur-lg opacity-40"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <!-- 左侧：悬浮模型展示 (参考 image_3b2334.png 的卡片叠放) -->
+            <div class="relative order-2 lg:order-1 h-[450px] flex justify-center items-center">
+                <!-- 装饰性发光路径 -->
+                <svg class="absolute w-full h-full text-orange-500/20 pointer-events-none" viewBox="0 0 400 400">
+                    <path d="M40,320 Q100,80 360,120" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="12 8" class="animate-[pulse_3s_infinite]" />
+                    <circle cx="40" cy="320" r="4" fill="currentColor" />
+                    <circle cx="360" cy="120" r="4" fill="currentColor" />
+                </svg>
+                
+                <div class="relative w-full max-w-[500px] h-full">
+                    <!-- 网页端 Mockup -->
+                    <div class="absolute top-4 left-0 w-[85%] aspect-video bg-slate-800 rounded-2xl border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] rotate-[-10deg] hover:rotate-0 hover:scale-105 transition-all duration-700 overflow-hidden group">
+                        <div class="h-7 bg-slate-900/80 flex items-center px-4 space-x-1.5 border-b border-white/5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/30"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/30"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/30"></div>
+                            <div class="ml-4 h-3 w-32 bg-white/5 rounded-full"></div>
+                        </div>
+                        <img src="https://placehold.co/800x500/112240/f97316?text=Amazon+Brand+Store+UI" class="w-full h-full object-cover" alt="Web UI">
+                        <!-- 悬停时光影渐变 -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+
+                    <!-- 手机端 Mockup -->
+                    <div class="absolute bottom-8 right-4 w-[35%] aspect-[9/19.5] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-[0_50px_100px_-20px_rgba(249,115,22,0.2)] rotate-[12deg] hover:rotate-0 hover:scale-110 transition-all duration-700 overflow-hidden z-10 group">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 bg-slate-800 rounded-b-2xl z-20"></div>
+                        <img src="https://placehold.co/400x850/0A192F/white?text=TikTok+Shop+UI" class="w-full h-full object-cover" alt="App UI">
+                        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[2rem]"></div>
+                    </div>
+
+                    <!-- 背景氛围光晕 -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-orange-600/10 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+                </div>
+            </div>
+
+            <!-- 右侧：文字说明区 -->
+            <div class="order-1 lg:order-2">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-xs font-bold tracking-widest uppercase mb-6">
+                    Multi-Device Experience
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight tracking-tighter">
+                    全链路 <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">多端适配</span><br>
+                    视觉交付规范
+                </h2>
+                <p class="text-slate-400 text-lg mb-10 leading-relaxed font-light">
+                    不仅仅是精美的图片，更是基于 <span class="text-white font-medium">商业转化</span> 的系统化输出。从 PC 端品牌旗舰店的沉浸式叙事，到移动端流媒体电商的极速交互，我提供一套完整的响应式设计规范。
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="group">
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors">
+                            <svg class="w-6 h-6 text-orange-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">PC 端品牌沉浸</h4>
+                        <p class="text-sm text-slate-500">针对亚马逊/独立站大屏端，通过宽幅视觉增强品牌溢价感。</p>
+                    </div>
+                    <div class="group">
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors">
+                            <svg class="w-6 h-6 text-orange-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">移动端交互逻辑</h4>
+                        <p class="text-sm text-slate-500">深谙 TK 等社媒电商逻辑，打造竖屏时代的“黄金三秒”转化视觉。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-4 flex items-center">
+                    <span class="text-orange-500 mr-4 font-mono">01.</span> 项目复盘
+                </h2>
+                <p class="text-slate-500">点击下方图片开启全屏轮播模式（每个项目包含5张分镜/细节展示）</p>
+            </div>
+
+            <!-- 第一排：核心技术类 -->
+            <div class="project-scroll hide-scrollbar mb-16">
+                <!-- 3D建模 -->
+                <div class="project-card-mini group cursor-pointer" onclick="openLightbox('p1')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[4/3] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="https://placehold.co/800x600/0A192F/white?text=3D+Product+Modeling+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="3D">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="px-4 py-2 border border-white rounded-full text-xs font-bold uppercase tracking-widest">点击预览详情</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">3D 产品建模与渲染展示</h4>
+                    <p class="text-sm text-slate-500">#C4D建模 #Octane渲染 #质感表现</p>
+                </div>
+
+                <!-- AI融合 -->
+                <div class="project-card-mini group cursor-pointer" onclick="openLightbox('p2')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[4/3] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="https://placehold.co/800x600/112240/F97316?text=AI+Scene+Generation+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="AI">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="px-4 py-2 border border-white rounded-full text-xs font-bold uppercase tracking-widest">点击预览详情</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">AI 融合产品全场景视觉</h4>
+                    <div class="flex flex-wrap gap-2 text-sm">
+                        <span class="text-orange-400">#GPT #Banana #Gemini</span>
+                        <span class="text-slate-500">#场景360度</span>
+                    </div>
+                </div>
+
+                <!-- PS精修 -->
+                <div class="project-card-mini group cursor-pointer" onclick="openLightbox('p3')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[4/3] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="https://placehold.co/800x600/0A192F/white?text=Retouch+Expert+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="PS">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="px-4 py-2 border border-white rounded-full text-xs font-bold uppercase tracking-widest">点击预览详情</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">产品拍摄 PS 及 AI 精修</h4>
+                    <p class="text-sm text-slate-500">#PS高精修 #AI扩图重构 #光影逻辑</p>
+                </div>
+            </div>
+
+            <!-- 第二排：平台实战类 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <!-- 主图 -->
+                <div class="cursor-pointer group" onclick="openLightbox('p4')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[16/10] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="image_3b946c.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="全平台主图展示" onerror="this.src='https://placehold.co/800x500/0f172a/cbd5e1?text=Main+Images+Showcase'">
+                        <div class="absolute top-4 right-4 flex space-x-1">
+                            <span class="bg-black/80 text-[8px] px-2 py-0.5 rounded text-white">TK/AMZ/TEMU/SITE</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">全平台主图展示</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">针对不同平台算法优化的首图、功能图套图。</p>
+                </div>
+
+                <!-- A+ -->
+                <div class="cursor-pointer group" onclick="openLightbox('p5')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[16/10] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="https://placehold.co/800x500/0f172a/cbd5e1?text=A+Plus+Pages+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="A+">
+                        <div class="absolute top-4 right-4 flex space-x-1">
+                            <span class="bg-black/80 text-[8px] px-2 py-0.5 rounded text-white">A+ CONTENT</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">A+ 页面展示</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">全平台适配的图文详情排版、品牌故事页设计。</p>
+                </div>
+
+                <!-- 亚马逊网页 -->
+                <div class="cursor-pointer group" onclick="openLightbox('p6')">
+                    <div class="bg-slate-800 rounded-3xl aspect-[16/10] overflow-hidden mb-6 relative border border-white/5">
+                        <img src="https://placehold.co/800x500/0f172a/cbd5e1?text=Amazon+Desktop+Web+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="网页">
+                        <div class="absolute top-4 right-4 flex space-x-1">
+                            <span class="bg-black/80 text-[8px] px-2 py-0.5 rounded text-white">AMZ WEB</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">亚马逊网页端展示</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">PC端大屏宽屏沉浸式视觉，侧重品牌质感传达。</p>
+                </div>
+            </div>
+
+            <div class="py-16 text-center max-w-2xl mx-auto mb-12">
+                <h3 class="text-3xl md:text-5xl font-black italic tracking-tighter mb-6 text-white uppercase">
+                    AI Creative Revolution
+                </h3>
+                <div class="w-12 h-1 bg-orange-500 mx-auto mb-6"></div>
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                    深度整合 Midjourney, Stable Diffusion 及多模态 AI 工具，探索跨境电商视觉设计的无限可能。
+                    通过 AI 赋能大幅提升品牌内容产出效率，同时构建极具张力的创意分镜与营销视觉体系。
+                </p>
+            </div>
+
+            <div class="space-y-32 mb-48">
+                <!-- 项目 P7: AI 广告分镜 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-12 group cursor-pointer" onclick="openLightbox('p7')">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
+                        <div class="max-w-lg">
+                            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-white tracking-tight">AI Ad Storyboarding</h4>
+                            <p class="text-slate-400 mb-8 leading-relaxed font-light">
+                                利用 AI 技术快速迭代视觉脚本，将创意构思具象化。通过精准的提示词控制，实现在极短时间内交付高质量的广告预演分镜，极大降低了沟通成本与前期拍摄风险。
+                            </p>
+                            <button class="bg-white text-black px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-colors">
+                                Explore Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[16/10] border border-white/10 shadow-2xl">
+                            <img src="https://placehold.co/800x500/1e293b/F97316?text=AI+Ad+Storyboard+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000">
+                            <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目 P8: 天猫营销 (反向) -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 lg:gap-12 group cursor-pointer" onclick="openLightbox('p8')">
+                    <div class="w-full md:w-1/2">
+                        <div class="max-w-lg ml-auto">
+                            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-white tracking-tight">Campaign Design</h4>
+                            <p class="text-slate-400 mb-8 leading-relaxed font-light">
+                                针对天猫 618 等大型促销节点，结合 AI 漫剧形式打造沉浸式营销视觉。突破传统电商设计的同质化瓶颈，用极具张力的创意画面吸引用户停留，提升点击转化率。
+                            </p>
+                            <button class="bg-white text-black px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-colors">
+                                Explore Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[16/10] border border-white/10 shadow-2xl">
+                            <img src="https://placehold.co/800x500/1e293b/F97316?text=Tmall+618+Design+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000">
+                            <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目 P9: 品牌分镜 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-12 group cursor-pointer" onclick="openLightbox('p9')">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
+                        <div class="max-w-lg">
+                            <h4 class="text-3xl md:text-4xl font-bold mb-6 text-white tracking-tight">Brand Visionary</h4>
+                            <p class="text-slate-400 mb-8 leading-relaxed font-light">
+                                探索品牌叙事的新边界。通过 AI 模拟多种艺术风格，为出海品牌构建全球化的视觉资产库。从概念草图到最终视觉呈现，全方位展示品牌的核心价值与未来感。
+                            </p>
+                            <button class="bg-white text-black px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-colors">
+                                Explore Project
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[16/10] border border-white/10 shadow-2xl">
+                            <img src="https://placehold.co/800x500/1e293b/F97316?text=Brand+AI+Storyboard+01" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000">
+                            <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增平面设计板块 -->
+            <div class="py-16 text-center max-w-3xl mx-auto mb-10">
+                <h3 class="text-4xl md:text-6xl font-black italic tracking-tighter mb-4 text-white uppercase">
+                    Graphic Design
+                </h3>
+                <p class="text-slate-500 text-sm md:text-base font-light mb-10">
+                    从品牌视觉延伸至线下触点，提供涵盖包装设计、海报宣发及全套品牌物料的高水准平面解决方案，助力品牌构建统一且极具辨识度的视觉资产。
+                </p>
+
+                <!-- 分类标签 (参考图2的横向标签) -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <span class="px-6 py-2 rounded-full bg-[#bada55] text-black text-xs font-black uppercase tracking-widest shadow-[0_5px_15px_rgba(186,218,85,0.3)] cursor-default">All Works</span>
+                    <span class="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-bold hover:bg-white/10 hover:text-white transition cursor-pointer">包装设计</span>
+                    <span class="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-bold hover:bg-white/10 hover:text-white transition cursor-pointer">视觉海报</span>
+                    <span class="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-bold hover:bg-white/10 hover:text-white transition cursor-pointer">宣传折页</span>
+                    <span class="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-bold hover:bg-white/10 hover:text-white transition cursor-pointer">品牌物料</span>
+                </div>
+            </div>
+
+            <!-- 平面设计作品网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-48">
+                <!-- 包装设计卡片 -->
+                <div class="bg-[#112240] rounded-[2.5rem] p-4 border border-white/5 group hover:border-orange-500/30 transition-all duration-500 cursor-pointer" onclick="openLightbox('p10')">
+                    <div class="rounded-[1.8rem] overflow-hidden aspect-[4/3] mb-6 relative">
+                        <img src="https://placehold.co/800x600/1e293b/cbd5e1?text=Packaging+Design" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute bottom-4 right-4 px-4 py-2 bg-[#bada55] rounded-full text-black text-[10px] font-black uppercase shadow-lg">View Project</div>
+                    </div>
+                    <div class="px-2 pb-2">
+                        <h4 class="text-white font-black italic text-lg uppercase mb-1">Packaging Design</h4>
+                        <p class="text-slate-500 text-xs">品牌系列产品包装全案设计</p>
+                    </div>
+                </div>
+
+                <!-- 海报设计卡片 -->
+                <div class="bg-[#112240] rounded-[2.5rem] p-4 border border-white/5 group hover:border-orange-500/30 transition-all duration-500 cursor-pointer" onclick="openLightbox('p11')">
+                    <div class="rounded-[1.8rem] overflow-hidden aspect-[4/3] mb-6 relative">
+                        <img src="https://placehold.co/800x600/1e293b/cbd5e1?text=Poster+Design" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute bottom-4 right-4 px-4 py-2 bg-[#bada55] rounded-full text-black text-[10px] font-black uppercase shadow-lg">View Project</div>
+                    </div>
+                    <div class="px-2 pb-2">
+                        <h4 class="text-white font-black italic text-lg uppercase mb-1">Creative Posters</h4>
+                        <p class="text-slate-500 text-xs">品牌营销活动创意视觉海报</p>
+                    </div>
+                </div>
+
+                <!-- 品牌物料卡片 -->
+                <div class="bg-[#112240] rounded-[2.5rem] p-4 border border-white/5 group hover:border-orange-500/30 transition-all duration-500 cursor-pointer" onclick="openLightbox('p12')">
+                    <div class="rounded-[1.8rem] overflow-hidden aspect-[4/3] mb-6 relative">
+                        <img src="https://placehold.co/800x600/1e293b/cbd5e1?text=Brand+Collateral" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute bottom-4 right-4 px-4 py-2 bg-[#bada55] rounded-full text-black text-[10px] font-black uppercase shadow-lg">View Project</div>
+                    </div>
+                    <div class="px-2 pb-2">
+                        <h4 class="text-white font-black italic text-lg uppercase mb-1">Brand Identity</h4>
+                        <p class="text-slate-500 text-xs">画册折页、VI规范及周边物料设计</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative mt-64 mb-32">
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between relative overflow-visible border border-white/5 shadow-2xl">
+                    <!-- 左侧文字内容 -->
+                    <div class="z-10 text-center md:text-left">
+                        <h2 class="text-4xl md:text-6xl font-black italic text-white leading-tight mb-8 tracking-tighter uppercase">
+                            Ready to Elevate <br>
+                            <span class="text-orange-500">Your Brand</span> Vision?
+                        </h2>
+                        
+                        <!-- 这里的 ID 设为 contact 以便锚点跳转 -->
+                        <div id="contact" class="flex flex-col items-center md:items-start gap-6">
+                            <a href="javascript:void(0)" class="inline-flex items-center px-8 py-4 bg-[#bada55] hover:bg-[#a9c944] text-black font-black rounded-full transition-all transform hover:scale-105 shadow-[0_10px_20px_rgba(186,218,85,0.3)] group">
+                                期待您的联系
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+
+                            <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+                                <!-- 手机/微信 -->
+                                <div class="group relative flex items-center bg-white/5 border border-white/10 px-4 py-3 rounded-2xl cursor-pointer hover:bg-white/10 hover:border-orange-500/50 transition-all" 
+                                     onclick="copyInfo('13800000000', '手机/微信号已复制')">
+                                    <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center mr-3 text-orange-500">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Phone / WeChat</p>
+                                        <p class="text-white font-mono text-sm">138-0000-0000</p>
+                                    </div>
+                                    <div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                                    </div>
+                                </div>
+
+                                <!-- 邮箱 -->
+                                <div class="group relative flex items-center bg-white/5 border border-white/10 px-4 py-3 rounded-2xl cursor-pointer hover:bg-white/10 hover:border-orange-500/50 transition-all" 
+                                     onclick="copyInfo('designer@example.com', '邮箱地址已复制')">
+                                    <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center mr-3 text-orange-500">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Email Address</p>
+                                        <p class="text-white font-mono text-sm">visual@design.com</p>
+                                    </div>
+                                    <div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧破框 3D 形象 (参考 image_3aaef5.png) -->
+                    <div class="absolute -right-4 -top-24 md:-right-10 md:-top-32 w-[280px] md:w-[450px] pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        <img src="https://placehold.co/600x800/0A192F/white?text=3D+CHARACTER" 
+                             class="w-full h-auto object-contain animate-float" 
+                             alt="3D Character"
+                             onerror="this.src='https://placehold.co/500x700/0A192F/f97316?text=CREATIVE+IP'">
+                    </div>
+                    
+                    <!-- 背景装饰光晕 -->
+                    <div class="absolute top-0 left-0 w-full h-full overflow-hidden rounded-[2.5rem] -z-10">
+                        <div class="absolute -left-20 -top-20 w-64 h-64 bg-orange-500/10 blur-[100px] rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 灯箱/轮播组件 HTML 结构 -->
+    <div id="lightbox" class="fixed inset-0 z-[100] glass-effect flex-col items-center justify-center p-4">
+        <!-- 关闭按钮 -->
+        <button onclick="closeLightbox()" class="absolute top-8 right-8 text-white/50 hover:text-white transition z-[110]">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <!-- 轮播区域 -->
+        <div class="relative w-full max-w-5xl flex items-center justify-center lightbox-img-container">
+            <!-- 左箭头 -->
+            <button onclick="prevImage()" class="absolute left-0 md:-left-16 text-white/30 hover:text-white transition p-4">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
+            <!-- 主图 -->
+            <img id="lightbox-main-img" src="" class="rounded-2xl shadow-2xl" alt="Preview">
+
+            <!-- 右箭头 -->
+            <button onclick="nextImage()" class="absolute right-0 md:-right-16 text-white/30 hover:text-white transition p-4">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+
+    <!-- 简单的提示弹窗组件 -->
+    <div id="copy-toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-6 py-3 rounded-full font-bold shadow-2xl z-[200] opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4">
+        已复制到剪贴板
+    </div>
+
+    <script>
+        // 复制功能函数
+        function copyInfo(text, message) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                console.error('无法复制', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // 显示提示条
+        function showToast(message) {
+            const toast = document.getElementById('copy-toast');
+            toast.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2000);
+        }
+
+        /* 作品集数据配置：支持特定图片路径 */
+        const projectData = {
+            'p1': { title: '3D 产品建模与渲染展示', color: '0A192F', text: 'Modeling' },
+            'p2': { title: 'AI 融合产品全场景视觉', color: '112240', text: 'AI+Scene' },
+            'p3': { title: '产品拍摄 PS 及 AI 精修', color: '0A192F', text: 'Retouching' },
+            'p4': { 
+                title: '跨境电商全平台主图套图', 
+                color: '0f172a', 
+                text: 'Main+Image',
+                images: [
+                    'image_3b946c.jpg', // 第一张使用真实图片
+                    'https://placehold.co/1200x800/0f172a/white?text=Main+Image+Detail+02',
+                    'https://placehold.co/1200x800/0f172a/white?text=Main+Image+Detail+03',
+                    'https://placehold.co/1200x800/0f172a/white?text=Main+Image+Detail+04',
+                    'https://placehold.co/1200x800/0f172a/white?text=Main+Image+Detail+05'
+                ]
+            },
+            'p5': { title: 'A+ 详情页面全案展示', color: '0f172a', text: 'APlus+Design' },
+            'p6': { title: '亚马逊网页端品牌店铺展示', color: '0f172a', text: 'Desktop+Web' },
+            'p7': { title: 'AI 产品广告分镜图展示', color: '1e293b', text: 'AI+Storyboard' },
+            'p8': { title: '天猫 618 漫剧广告专题', color: '1e293b', text: 'Campaign+618' },
+            'p9': { title: '品牌宣传 AI 概念视觉', color: '1e293b', text: 'Brand+AI' },
+            'p10': { title: '品牌系列产品包装全案设计', color: '112240', text: 'Packaging' },
+            'p11': { title: '品牌营销活动创意视觉海报', color: '1e293b', text: 'Posters' },
+            'p12': { title: '品牌物料与画册折页设计', color: '112240', text: 'Brochures' }
+        };
+
+        let currentProjectId = '';
+        let currentIndex = 0;
+        const totalImages = 5;
+
+        // 打开灯箱
+        function openLightbox(id) {
+            currentProjectId = id;
+            currentIndex = 1;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden'; // 禁止滚动
+        }
+
+        // 关闭灯箱
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+
+        // 更新灯箱内容
+        function updateLightbox() {
+            const project = projectData[currentProjectId];
+            const mainImg = document.getElementById('lightbox-main-img');
+            const titleElem = document.getElementById('lightbox-title');
+            const indexElem = document.getElementById('lightbox-index');
+            const dotsContainer = document.getElementById('lightbox-dots');
+
+            let imgUrl = "";
+            if (project.images && project.images[currentIndex - 1]) {
+                imgUrl = project.images[currentIndex - 1];
+            } else {
+                imgUrl = `https://placehold.co/1200x800/${project.color}/white?text=${project.text}+Shot+0${currentIndex}`;
+            }
+            
+            // 切换图片时的简单缩放效果
+            mainImg.style.transform = 'scale(0.95)';
+            mainImg.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                mainImg.src = imgUrl;
+                // 添加错误处理，如果真实图片加载失败则显示占位图
+                mainImg.onerror = function() {
+                    this.src = `https://placehold.co/1200x800/${project.color}/white?text=Image+Load+Error`;
+                    this.onerror = null;
+                };
+                
+                titleElem.innerText = project.title;
+                indexElem.innerText = `${currentIndex} / ${totalImages}`;
+                
+                // 更新小圆点
+                dotsContainer.innerHTML = '';
+                for(let i=1; i<=totalImages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = `w-2 h-2 rounded-full transition ${i === currentIndex ? 'bg-orange-500 w-6' : 'bg-white/20'}`;
+                    dotsContainer.appendChild(dot);
+                }
+                
+                mainImg.style.transform = 'scale(1)';
+                mainImg.style.opacity = '1';
+            }, 150);
+        }
+
+        function nextImage() {
+            currentIndex = currentIndex >= totalImages ? 1 : currentIndex + 1;
+            updateLightbox();
+        }
+
+        function prevImage() {
+            currentIndex = currentIndex <= 1 ? totalImages : currentIndex - 1;
+            updateLightbox();
+        }
+
+        // 手机端滑动手势支持
+        let touchStartX = 0;
+        const lightbox = document.getElementById('lightbox');
+
+        lightbox.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        lightbox.addEventListener('touchend', e => {
+            let touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextImage(); // 左滑下张
+            if (touchEndX - touchStartX > 50) prevImage(); // 右滑前张
+        });
+
+        // 键盘支持
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
